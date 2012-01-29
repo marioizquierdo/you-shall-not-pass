@@ -1,18 +1,18 @@
 package menu 
 {
-	import org.flixel.*;
- 
-	public class MenuState extends FlxState
+	
+	public class WaveSuccessState 
 	{
+		
 		override public function create():void
 		{
 			var title:FlxText;
-			title = new FlxText(0, 16, FlxG.width, "You Shall Not Pass");
+			title = new FlxText(0, 16, FlxG.width, "Wave Cleared!");
 			title.setFormat (null, 16, 0xFFFFFFFF, "center");
 			add(title);
  
 			var instructions:FlxText;
-			instructions = new FlxText(0, FlxG.height - 32, FlxG.width, "Press Space to start");
+			instructions = new FlxText(0, FlxG.height - 32, FlxG.width, "Press Space to play next wave");
 			instructions.setFormat (null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
  
@@ -29,13 +29,12 @@ package menu
 			}
  
 		} // end function update
- 
- 
-		public function MenuState()
+		
+		public function WaveSuccessState() 
 		{
-			super();
- 
-		}  // end function MenuState
- 
-	} // end class
-}// end package
+			
+		}
+		
+	}
+
+}

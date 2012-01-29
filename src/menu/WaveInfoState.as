@@ -1,4 +1,4 @@
-package wave_info 
+package menu 
 {
 	
 	import org.flixel.*;
