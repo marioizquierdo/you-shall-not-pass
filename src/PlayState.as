@@ -9,6 +9,9 @@ package
 		{
 			add(new FlxText(0, 0, 100, "Playing wave " + Registry.currentLevel)); //adds a 100px wide text field at position 0,0 (top left)
 			add(new FlxText(0, FlxG.height - 32, 100, "Press space to clear this wave!"));
+			
+			Registry.playerWizard = new PlayerWizard(20, 120);
+			add(Registry.playerWizard);
 		}
 		
 		override public function update():void
