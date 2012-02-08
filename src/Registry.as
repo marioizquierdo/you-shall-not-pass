@@ -11,10 +11,7 @@ package
                 public static var playerWizard:PlayerWizard;
                 public static var currentLevel:int;
                 public static var enemiesKilledThisLevel:int;
-
-                public function Registry()
-                {
-                }
-
+				
+                public function Registry() {}
         }
 }

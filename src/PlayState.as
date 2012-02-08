@@ -5,17 +5,44 @@ package
  
 	public class PlayState extends FlxState
 	{
+		[Embed(source = "data/background.jpg")] protected var ImgBackground:Class;
+		[Embed(source = "data/bridge.png")] protected var ImgBridge:Class;
+		
+		public static const MAP_WIDTH:uint = 800; // Total WIDTH pixels of the map
+		public static const MAP_HEIGHT:uint = FlxG.height;
+		public static const FLOOR_Y:uint = 148; // position Y in pixels where the floor is
+		public static const PLAYER_CAMERA_OFFSET_X:int = -110; // how far is the player from the center of the screen
+		
+		public var playerWizard:PlayerWizard;
+		public var cameraFocus:FlxObject;
+		
 		override public function create():void
 		{
 			add(new FlxText(0, 0, 100, "Playing wave " + Registry.currentLevel)); //adds a 100px wide text field at position 0,0 (top left)
 			add(new FlxText(0, FlxG.height - 32, 100, "Press space to clear this wave!"));
 			
-			Registry.playerWizard = new PlayerWizard(20, 120);
-			add(Registry.playerWizard);
+			// HUD
+			add(new FlxSprite(0, 10, ImgBackground));
+			add(new FlxSprite(0, FLOOR_Y - 9, ImgBridge));
+			
+			// Player
+			playerWizard = new PlayerWizard((FlxG.width/2) + PLAYER_CAMERA_OFFSET_X, FLOOR_Y);
+			Registry.playerWizard = playerWizard;
+			add(playerWizard);
+			
+			// Camera
+			cameraFocus = new FlxObject(FlxG.width/2, FlxG.height/2);
+			FlxG.camera.follow(cameraFocus);
+			FlxG.camera.setBounds(0, 0, MAP_WIDTH, MAP_HEIGHT);
 		}
 		
 		override public function update():void
 		{
+			
+			// Move camera focus to follow the player
+			cameraFocus.x = playerWizard.x - PLAYER_CAMERA_OFFSET_X;
+			
+			
 			super.update(); // calls update on everything you added to the game loop
  
 			if (FlxG.keys.justPressed("SPACE"))
