@@ -7,6 +7,7 @@ package
 	{
 		[Embed(source = "data/background.jpg")] protected var ImgBackground:Class;
 		[Embed(source = "data/bridge.png")] protected var ImgBridge:Class;
+		[Embed(source = "data/cursor/default.png")] private var ImgCursorDefault:Class;
 		
 		public static const MAP_WIDTH:uint = 800; // Total WIDTH pixels of the map
 		public static const MAP_HEIGHT:uint = FlxG.height;
@@ -21,14 +22,22 @@ package
 			add(new FlxText(0, 0, 100, "Playing wave " + Registry.currentLevel)); //adds a 100px wide text field at position 0,0 (top left)
 			add(new FlxText(0, FlxG.height - 32, 100, "Press space to clear this wave!"));
 			
-			// HUD
+			// Background
 			add(new FlxSprite(0, 10, ImgBackground));
-			add(new FlxSprite(0, FLOOR_Y - 9, ImgBridge));
 			
 			// Player
 			playerWizard = new PlayerWizard((FlxG.width/2) + PLAYER_CAMERA_OFFSET_X, FLOOR_Y);
 			Registry.playerWizard = playerWizard;
 			add(playerWizard);
+			
+			// Bridge
+			add(new FlxSprite(0, FLOOR_Y - 8, ImgBridge));
+			
+			// MOUSE
+			FlxG.mouse.show(ImgCursorDefault, 2, -7, -7);
+
+			// HUD
+			// No HUD graphis yet
 			
 			// Camera
 			cameraFocus = new FlxObject(FlxG.width/2, FlxG.height/2);
@@ -42,6 +51,18 @@ package
 			// Move camera focus to follow the player
 			cameraFocus.x = playerWizard.x - PLAYER_CAMERA_OFFSET_X;
 			
+			
+			// Mouse
+			if (FlxG.mouse.justPressed())
+			{
+				var particle:FlxSprite = new FlxSprite(FlxG.mouse.screenX, FlxG.mouse.screenY);
+				particle.height = 1;
+				particle.width = 1;
+				particle.acceleration.y = 10;
+				particle.makeGraphic(1, 1, 0xffffffff, false);
+				add(particle);
+			}
+
 			
 			super.update(); // calls update on everything you added to the game loop
  
