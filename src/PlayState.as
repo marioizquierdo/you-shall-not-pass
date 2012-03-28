@@ -55,7 +55,7 @@ package
 			// Mouse
 			if (FlxG.mouse.justPressed())
 			{
-				var particle:FlxSprite = new FlxSprite(FlxG.mouse.screenX, FlxG.mouse.screenY);
+				var particle:FlxSprite = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
 				particle.height = 1;
 				particle.width = 1;
 				particle.acceleration.y = 10;
