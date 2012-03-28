@@ -1,13 +1,14 @@
 package
 {
 	import org.flixel.*;
+	import enemy.*;
 	import menu.WaveInfoState;
  
 	public class PlayState extends FlxState
 	{
-		[Embed(source = "data/background.jpg")] protected var ImgBackground:Class;
-		[Embed(source = "data/bridge.png")] protected var ImgBridge:Class;
-		[Embed(source = "data/cursor/default.png")] private var ImgCursorDefault:Class;
+		[Embed(source = "/data/background.jpg")] protected var ImgBackground:Class;
+		[Embed(source = "/data/bridge.png")] protected var ImgBridge:Class;
+		[Embed(source = "/data/cursor/default.png")] private var ImgCursorDefault:Class;
 		
 		public static const MAP_WIDTH:uint = 800; // Total WIDTH pixels of the map
 		public static const MAP_HEIGHT:uint = FlxG.height;
@@ -16,6 +17,7 @@ package
 		
 		public var playerWizard:PlayerWizard;
 		public var cameraFocus:FlxObject;
+		public var enemies:FlxGroup;
 		
 		override public function create():void
 		{
@@ -29,6 +31,12 @@ package
 			playerWizard = new PlayerWizard((FlxG.width/2) + PLAYER_CAMERA_OFFSET_X, FLOOR_Y);
 			Registry.playerWizard = playerWizard;
 			add(playerWizard);
+			
+			// Enemies
+			enemies = new FlxGroup();
+			enemies.add(new Enemy(300, FLOOR_Y));
+			enemies.add(new Enemy(350, FLOOR_Y));
+			add(enemies);
 			
 			// Bridge
 			add(new FlxSprite(0, FLOOR_Y - 8, ImgBridge));

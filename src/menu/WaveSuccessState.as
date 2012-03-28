@@ -1,6 +1,5 @@
 package menu 
-{
-	
+{	
 	public class WaveSuccessState 
 	{
 		
@@ -12,7 +11,7 @@ package menu
 			add(title);
  
 			var instructions:FlxText;
-			instructions = new FlxText(0, FlxG.height - 32, FlxG.width, "Press Space to play next wave");
+			instructions = new FlxText(0, FlxG.height - 32, FlxG.width, "Click or Press Space to play next wave");
 			instructions.setFormat (null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
  
@@ -23,7 +22,7 @@ package menu
 		{
 			super.update(); // calls update on everything you added to the game loop
  
-			if (FlxG.keys.justPressed("SPACE"))
+			if (FlxG.keys.justPressed("SPACE") || FlxG.mouse.justPressed())
 			{
 				FlxG.switchState(new WaveInfoState());
 			}

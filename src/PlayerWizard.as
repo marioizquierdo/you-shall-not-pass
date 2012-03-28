@@ -4,20 +4,20 @@ package
 	
 	public class PlayerWizard extends FlxSprite 
 	{
-		[Embed(source = "data/wizard.png")] protected var ImgWizard:Class;
+		[Embed(source = "/data/wizard.png")] protected var ImgWizard:Class;
+		public static const WIDTH:uint  = 27;
+		public static const HEIGHT:uint = 32;
 	
 		public function PlayerWizard(X:int,Y:int) 
 		{
 			super(X,Y);
-			loadGraphic(ImgWizard, false, false, 27, 32);
 			
-			//bounding box tweaks
-			width = 27;
-			height = 32;
-			origin.x = 8; // center of wizard body
-			origin.y = 32; // bottom, so the origin is in its foots
-			offset.x = origin.x;
-			offset.y = origin.y;
+			// load graphic and set align to bottom-center (in the foots) 
+			loadGraphic(ImgWizard, false, false, WIDTH, HEIGHT);
+			width = WIDTH;
+			height = HEIGHT;
+			origin.x = offset.x = WIDTH/2;
+			offset.y = origin.y = HEIGHT; // bottom, so the origin is in its foots
 
 			//basic player physics
 			drag.x = 300;
@@ -30,11 +30,11 @@ package
 
 			//MOVEMENT
 			acceleration.x = 0;
-			if(FlxG.keys.LEFT)
+			if(FlxG.keys.LEFT || FlxG.keys.A)
 			{
 				acceleration.x -= drag.x/2;
 			}
-			else if(FlxG.keys.RIGHT)
+			else if(FlxG.keys.RIGHT || FlxG.keys.D)
 			{
 				acceleration.x += drag.x/2;
 			}
