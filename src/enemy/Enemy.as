@@ -10,26 +10,26 @@ package enemy
 		
 		public function Enemy(X:int,Y:int) 
 		{
-			super(X,Y);
+			super(X, Y-HEIGHT); // Initialize having the Y in the bottom
 			
-			// load graphic and set align to bottom-center (in the foots) 
 			loadGraphic(ImgOrc, false, false, WIDTH, HEIGHT);
-			width = WIDTH;
-			height = HEIGHT;
-			origin.x = offset.x = WIDTH/2;
-			offset.y = origin.y = HEIGHT; // bottom, so the origin is in its foots
-			
+
 			//basic player physics
 			maxVelocity.x = 20;
-			
 		}
 		
 		 override public function update():void
 		{
 
 			//MOVEMENT
-			acceleration.x = -100; // just go ahead
+			acceleration.x = -15; // just go ahead
 
+		}
+		
+		public function hitBy(bullet:FlxSprite):void
+		{
+			velocity.x = +20;
+			bullet.kill();
 		}
 		
 	}

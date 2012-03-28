@@ -10,14 +10,9 @@ package
 	
 		public function PlayerWizard(X:int,Y:int) 
 		{
-			super(X,Y);
+			super(X,Y-HEIGHT); // Initialize having the Y in the bottom
 			
-			// load graphic and set align to bottom-center (in the foots) 
 			loadGraphic(ImgWizard, false, false, WIDTH, HEIGHT);
-			width = WIDTH;
-			height = HEIGHT;
-			origin.x = offset.x = WIDTH/2;
-			offset.y = origin.y = HEIGHT; // bottom, so the origin is in its foots
 
 			//basic player physics
 			drag.x = 300;

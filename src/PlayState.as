@@ -18,6 +18,7 @@ package
 		public var playerWizard:PlayerWizard;
 		public var cameraFocus:FlxObject;
 		public var enemies:FlxGroup;
+		public var bullets:FlxGroup;
 		
 		override public function create():void
 		{
@@ -37,6 +38,10 @@ package
 			enemies.add(new Enemy(300, FLOOR_Y));
 			enemies.add(new Enemy(350, FLOOR_Y));
 			add(enemies);
+			
+			// Bullets (player attacks)
+			bullets = new FlxGroup();
+			add(bullets);
 			
 			// Bridge
 			add(new FlxSprite(0, FLOOR_Y - 8, ImgBridge));
@@ -68,9 +73,11 @@ package
 				particle.width = 1;
 				particle.acceleration.y = 10;
 				particle.makeGraphic(1, 1, 0xffffffff, false);
-				add(particle);
+				bullets.add(particle);
 			}
 
+			// Bullet collision with Enemy
+			FlxG.overlap(bullets, enemies, hitEnemy);
 			
 			super.update(); // calls update on everything you added to the game loop
  
@@ -81,5 +88,11 @@ package
 			}
  
 		} // end function update
+		
+		//Called whenever a bullet touches a enemy
+		public function hitEnemy(bullet:FlxSprite, monster:Enemy):void
+		{
+			monster.hitBy(bullet);
+		}
 	}
 }
