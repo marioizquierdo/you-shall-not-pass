@@ -22,14 +22,13 @@ package
 		
 		 override public function update():void
 		{
-
 			//MOVEMENT
 			acceleration.x = 0;
-			if(FlxG.keys.LEFT || FlxG.keys.A)
+			if((FlxG.keys.LEFT || FlxG.keys.A) && x > WIDTH)
 			{
 				acceleration.x -= drag.x/2;
 			}
-			else if(FlxG.keys.RIGHT || FlxG.keys.D)
+			else if((FlxG.keys.RIGHT || FlxG.keys.D) && x < (PlayState.MAP_WIDTH-WIDTH))
 			{
 				acceleration.x += drag.x/2;
 			}

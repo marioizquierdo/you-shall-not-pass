@@ -16,17 +16,17 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'28/03/2012'</value>
+      <value>'6/7/2012'</value>
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>C:\Documents and Settings\Administrador\Mis documentos\AS3\YouShallNotPass\src</path-element>
-      <path-element>C:\Documents and Settings\Administrador\Mis documentos\AS3\YouShallNotPass\lib</path-element>
-      <path-element>C:\Archivos de programa\FlashDevelop\Library\AS3\classes</path-element>
+      <path-element>C:\Users\Jay Negandhi\Documents\youshallnotpass\you-shall-not-pass\src</path-element>
+      <path-element>C:\Users\Jay Negandhi\Documents\youshallnotpass\you-shall-not-pass\lib</path-element>
+      <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
   </compiler>
   <file-specs>
-    <path-element>C:\Documents and Settings\Administrador\Mis documentos\AS3\YouShallNotPass\src\YouShallNotPass.as</path-element>
+    <path-element>C:\Users\Jay Negandhi\Documents\youshallnotpass\you-shall-not-pass\src\YouShallNotPass.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
