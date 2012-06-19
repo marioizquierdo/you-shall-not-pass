@@ -1,25 +1,25 @@
-package  
+package
 {
 	import org.flixel.*;
-	
-	public class PlayerWizard extends FlxSprite 
+
+	public class PlayerWizard extends FlxSprite
 	{
 		[Embed(source = "/data/wizard.png")] protected var ImgWizard:Class;
-		public static const WIDTH:uint  = 27;
-		public static const HEIGHT:uint = 32;
-	
-		public function PlayerWizard(X:int,Y:int) 
+		public static const WIDTH:uint  = 29;
+		public static const HEIGHT:uint = 37;
+
+		public function PlayerWizard(X:int,Y:int)
 		{
 			super(X,Y-HEIGHT); // Initialize having the Y in the bottom
-			
+
 			loadGraphic(ImgWizard, false, false, WIDTH, HEIGHT);
 
 			//basic player physics
 			drag.x = 300;
 			maxVelocity.x = 50;
-			
+
 		}
-		
+
 		 override public function update():void
 		{
 			//MOVEMENT
@@ -34,7 +34,7 @@ package
 			}
 
 		}
-		
+
 	}
 
 }
